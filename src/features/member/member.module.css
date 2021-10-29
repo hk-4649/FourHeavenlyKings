@@ -1,0 +1,93 @@
+.details {
+  color: whitesmoke;
+  font-weight: bold;
+  text-align: center;
+  margin: 18px;
+  font-size: 24px;
+  font-family: "Comic Neue", cursive;
+}
+
+.chart {
+  height: 300px;
+  width: 300px;
+}
+
+.label {
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.item {
+  padding: 20px 30px;
+  text-align: left;
+}
+.contents {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  width: 100%;
+}
+.header h1 {
+  color: whitesmoke;
+  font-weight: 300;
+  text-align: center;
+  margin: 0px 0px 10px 0px;
+
+  font-family: "Comic Neue", cursive;
+}
+.header h3 {
+  color: whitesmoke;
+  font-size: 18px;
+  margin: 10px;
+  font-family: "Comic Neue", cursive;
+  font-weight: 200;
+}
+span {
+  color: whitesmoke;
+  font-size: 20px;
+  font-family: "Comic Neue", cursive;
+}
+.taskIcon {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  color: #bbb;
+  margin-right: 20px;
+}
+.addIcon {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #bbb;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+.saveIcon {
+  cursor: pointer;
+  background-color: transparent;
+  color: #bbb;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+.cursor {
+  cursor: pointer;
+}
+.memberList {
+  width: 90%;
+  margin: auto;
+  max-height: 300px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  padding-bottom: 5px;
+}

@@ -81,7 +81,7 @@ span {
 .memberList {
   width: 90%;
   margin: auto;
-  max-height: 300px;
+  max-height: 400px;
   overflow: hidden;
   overflow-y: auto;
 }
@@ -90,4 +90,17 @@ span {
   justify-content: space-between;
   margin: 20px 0;
   padding-bottom: 5px;
+}
+.inputLog {
+  width: 45%;
+  margin: 20px;
+  font-family: "Comic Neue", cursive;
+  background-color: #292f38;
+  border: 0;
+  outline: 0;
+  border-bottom: 2px solid #e4dada;
+  font-size: 1.4rem;
+  color: whitesmoke;
+  font-size: 20px;
+  text-align: center;
 }

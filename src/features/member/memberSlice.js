@@ -45,21 +45,34 @@ const members = [
   },
 ];
 
+const defaultMember = {
+  name: "",
+  status: {
+    str: 1,
+    agl: 1,
+    ran: 1,
+    sus: 1,
+    dex: 1,
+    pot: 1,
+  },
+};
 export const memberSlice = createSlice({
   name: "member",
   initialState: {
     idCount: members.length,
     members,
     selectedMember: {},
+    isNew: false,
   },
   reducers: {
     newMember: (state, action) => {
       state.idCount++;
       const newItem = {
-        ...action.payload,
         id: state.idCount,
+        member: action.payload,
       };
       state.members = [newItem, ...state.members];
+      state.isNew = false;
     },
     editMember: (state, action) => {
       const { id, member } = action.payload;
@@ -67,11 +80,19 @@ export const memberSlice = createSlice({
       item.member = member;
     },
     selectMember: (state, action) => {
-      state.selectedMember = action.payload;
+      if (action.payload) {
+        state.selectedMember = action.payload;
+        state.isNew = false;
+      } else {
+        state.selectedMember = {
+          id: state.idCount + 1,
+          member: defaultMember,
+        };
+        state.isNew = true;
+      }
     },
     deleteMember: (state, action) => {
       const { id } = action.payload;
-      state.idCount--;
       state.members = state.members.filter((t) => t.id !== id);
       if (state.selectedMember.id === id) {
         state.selectedMember = {};
@@ -85,5 +106,6 @@ export const { newMember, editMember, selectMember, deleteMember } =
 
 export const selectMembers = (state) => state.member.members;
 export const selectSelectedMembers = (state) => state.member.selectedMember;
+export const selectIsNewMember = (state) => state.member.isNew;
 
 export default memberSlice.reducer;

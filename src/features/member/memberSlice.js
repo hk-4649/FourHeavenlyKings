@@ -98,11 +98,24 @@ export const memberSlice = createSlice({
         state.selectedMember = {};
       }
     },
+    moveSlider: (state, action) => {
+      const { key, value } = action.payload;
+      state.selectedMember.member.status[key] = value;
+    },
+    editName: (state, action) => {
+      state.selectedMember.member.name = action.payload;
+    },
   },
 });
 
-export const { newMember, editMember, selectMember, deleteMember } =
-  memberSlice.actions;
+export const {
+  newMember,
+  editMember,
+  selectMember,
+  deleteMember,
+  moveSlider,
+  editName,
+} = memberSlice.actions;
 
 export const selectMembers = (state) => state.member.members;
 export const selectSelectedMembers = (state) => state.member.selectedMember;

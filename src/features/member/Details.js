@@ -14,6 +14,7 @@ import { editMember } from "./memberSlice";
 import { PowerSlider } from "./PowerSlider";
 import { Chart } from "./Chart";
 
+const statusArray = ["str", "agl", "ran", "sus", "dex", "pot"];
 const toJapanese = {
   str: "破壊力",
   agl: "スピード",
@@ -31,8 +32,7 @@ export const Details = () => {
   if (!member) {
     return null;
   }
-  const chartData = Object.entries(member.status).map(([, value]) => value);
-  const statusArray = Object.entries(member.status).map(([key]) => key);
+  const chartData = statusArray.map((e) => member.status[e] ?? 1);
   const labels = statusArray.map((e) => toJapanese[e]);
   return (
     <>

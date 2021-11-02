@@ -23,30 +23,25 @@ const toJapanese = {
 };
 
 export const Details = () => {
-  const [name, setName] = useState(null);
+  const [name, setName] = useState("");
   const [status, setStatus] = useState({});
   const { member, id } = useSelector(selectSelectedMembers);
   const isNewMember = useSelector(selectIsNewMember);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    setName(null);
-    setStatus({});
-  }, [id]);
+    if (!member) return;
+    setName(member.name);
+    setStatus(member.status);
+  }, [member, id]);
+
   if (!member) {
     return null;
   }
-  const chartData = Object.entries(member.status).map(
-    ([key, value]) => status[key] ?? value
-  );
-  const editedStatus = statusArray.reduce(
-    (acc, cur, i) => ({ ...acc, [cur]: chartData[i] }),
-    {}
-  );
-  const editedName = name ?? member.name;
+  const chartData = statusArray.map((e) => status[e] ?? 1);
   const editedMember = {
-    name: editedName,
-    status: editedStatus,
+    name,
+    status,
   };
   return (
     <>
@@ -55,7 +50,7 @@ export const Details = () => {
           type="text"
           className={styles.inputLog}
           name="username"
-          value={editedName}
+          value={name}
           onChange={(e) => setName(e.target.value)}
           required
         />
@@ -69,7 +64,7 @@ export const Details = () => {
             <PowerSlider
               key={i}
               label={toJapanese[e]}
-              value={status[e] ?? chartData[i]}
+              value={chartData[i]}
               onChange={(_, val) => setStatus({ ...status, [e]: val })}
             />
           ))}

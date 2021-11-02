@@ -5,14 +5,7 @@ import styles from "./member.module.css";
 export const Chart = (props) => {
   const data = {
     // x 軸のラベル
-    labels: [
-      "破壊力",
-      "スピード",
-      "射程距離",
-      "持続力",
-      "精密動作性",
-      "成長性",
-    ],
+    labels: props.labels,
     datasets: [
       {
         label: "Dataset",

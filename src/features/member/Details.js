@@ -39,6 +39,7 @@ export const Details = () => {
     return null;
   }
   const chartData = statusArray.map((e) => status[e] ?? 1);
+  const labels = statusArray.map((e) => toJapanese[e]);
   const editedMember = {
     name,
     status,
@@ -57,7 +58,7 @@ export const Details = () => {
       </div>
       <div className={styles.contents}>
         <div className={styles.item}>
-          <Chart data={chartData} />
+          <Chart data={chartData} labels={labels} />
         </div>
         <div className={styles.item}>
           {statusArray.map((e, i) => (
